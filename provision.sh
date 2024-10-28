@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#Instrucciones archivo hosts 
+#Cambio el archivo hosts en la ruta : C:\Windows\System32\drivers\etc
+#agrego la ip de la maquina virtual y el nombre del dominio 192.168.56.10 ismael
+
 # 1. Actualizar repositorios, instalar Nginx, instalar git para traer el repositorio
 apt update
 apt install -y nginx git
