@@ -7,6 +7,7 @@ Vagrant.configure("2") do |config|
     # Ejecuta el script de provisión para instalar y configurar Nginx
     nginx.vm.provision "shell", path: "provision.sh"
 
+    # Copio mi archivo de configuración de Nginx
     cp /vagrant/ismael /etc/nginx/sites-available/
   end
 end
