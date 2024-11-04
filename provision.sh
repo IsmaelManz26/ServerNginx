@@ -75,16 +75,17 @@ sudo mkdir -p  /var/www/ismaelpersonal
 sudo chown -R www-data:www-data /var/www/ismaelpersonal
 sudo chmod -R 775 /var/www/ismaelpersonal
 
-# Clonar el repositorio en la carpeta
-sudo git clone https://github.com/IsmaelManz26/MxIsmaelManzano.git /var/www/ismaelpersonal
-
-# Copiar el archiv de sites avaliable del nuevo dominio
-cp /vagrant/ismaelpersonal /etc/nginx/sites-available/ismaelpersonal
-
-# Creamos el enlace simbolico
-sudo ln -s /etc/nginx/sites-available/ismaelpersonal /etc/nginx/sites-enabled/
-
 # Reiniciar el servicio vsftpd
 sudo systemctl restart vsftpd
 sudo systemctl status vsftpd
 
+# Clonar el repositorio en la carpeta
+sudo git clone https://github.com/IsmaelManz26/MxIsmaelManzano.git /var/www/ismaelpersonal
+
+# Copiar el archivo de sites avaliable del nuevo dominio
+cp /vagrant/ismaelpersonal /etc/nginx/sites-available/ismaelpersonal
+
+# Creamos el enlace simbolico
+sudo ln -s /etc/nginx/sites-available/ismaelpersonal /etc/nginx/sites-enabled/
+# Reinicar nginx
+sudo systemctl restart nginx
