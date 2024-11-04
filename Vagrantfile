@@ -9,10 +9,6 @@ Vagrant.configure("2") do |config|
 
     # Copio mi archivo de configuración de Nginx
     #cp /vagrant/ismael /etc/nginx/sites-available/
-    # Copiar el archivo de configuración de vsftpd
-    config.vm.provision "shell", inline: <<-SHELL
-      cp /vagrant/vsftpd.conf /etc/vsftpd.conf
-      cp /vagrant/vsftpd /etc/pam.d/vsftpd
-    SHELL
+    
   end
 end

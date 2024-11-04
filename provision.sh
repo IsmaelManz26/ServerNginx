@@ -48,15 +48,43 @@ sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get install -y vsftpd
 
+# Agregamos el usuario ismael
+sudo adduser ismael
+# Establecemos la contraseña del usuario ismael
+echo "ismael:ismael" | sudo chpasswd
+
 #creamos la carpeta donde se alojaran los archivos
-mkdir /home/vagrant/ftp
+sudo mkdir /home/ismael/ftp
 #Permisos carpeta
-sudo chown vagrant:vagrant /home/vagrant/ftp
-sudo chmod 755 /home/vagrant/ftp
+sudo chown vagrant:vagrant /home/ismael/ftp
+sudo chmod 755 /home/ismael/ftp
 # Verificar si el certificado ya existe
 if [ ! -f /etc/ssl/certs/vsftpd.crt ]; then
-    # Crear el certificado SSL
+     # Crear el certificado SSL
     sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.key -out /etc/ssl/certs/vsftpd.crt -subj "/C=ES/ST=Granada/L=Granada/O=IESZaidinVergeles/CN=192.168.56.10"
 fi
 
+cp /vagrant/vsftpd.conf /etc/vsftpd.conf
+
+# Agrego el usuario ismael al grupo www-data
+sudo usermod -aG www-data ismael
+
+#creo la carpeta nueva para el sitio web nuevo
+sudo mkdir -p  /var/www/ismaelpersonal
+# damos permisos a esa carpeta
+sudo chown -R www-data:www-data /var/www/ismaelpersonal
+sudo chmod -R 775 /var/www/ismaelpersonal
+
+# Clonar el repositorio en la carpeta
+sudo git clone https://github.com/IsmaelManz26/MxIsmaelManzano.git /var/www/ismaelpersonal
+
+# Copiar el archiv de sites avaliable del nuevo dominio
+cp /vagrant/ismaelpersonal /etc/nginx/sites-available/ismaelpersonal
+
+# Creamos el enlace simbolico
+sudo ln -s /etc/nginx/sites-available/ismaelpersonal /etc/nginx/sites-enabled/
+
+# Reiniciar el servicio vsftpd
+sudo systemctl restart vsftpd
+sudo systemctl status vsftpd
 
