@@ -87,6 +87,5 @@ cp /vagrant/ismaelpersonal /etc/nginx/sites-available/ismaelpersonal
 
 # Creamos el enlace simbolico
 sudo ln -s /etc/nginx/sites-available/ismaelpersonal /etc/nginx/sites-enabled/
-# Reinicar y recargar nginx
+# Reinicar nginx
 sudo systemctl restart nginx
-sudo systemctl reload nginx
