@@ -128,10 +128,10 @@ Instalación y configuración de `vsftpd` para un servidor FTPS seguro.
 
 Configura un segundo dominio y transfiere los archivos mediante FTPS. Recuerda dar permisos adecuados y repetir el proceso de configuración en Nginx para el segundo sitio.
 ![Dominio Nuevo](./Capturas/prueba2web.png)
-Comprobacion Log segundo dominio web.
-![Comprobacion Logs Dominio Nuevo](./Capturas/comprobacion.log2web.png)
-Comprobacion segundo dominio web.
-![Comprobacion segundo Dominio](./Capturas/comprobacion.nginx-t2web.png)
+Comprobacion Log segundo dominio web.<br>
+![Comprobacion Logs Dominio Nuevo](./Capturas/comprobacion.log2web.png)<br>
+Comprobacion segundo dominio web.<br>
+![Comprobacion segundo Dominio](./Capturas/comprobacion.nginx-t2web.png)<br>
 
 ## 6. Cuestiones Finales
 
