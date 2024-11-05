@@ -101,10 +101,11 @@ Instalación y configuración de `vsftpd` para un servidor FTPS seguro.
    ```bash
    sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.key -out /etc/ssl/certs/vsftpd.crt
    ```
-   Certificado ssl Filezilla.<br>
-   (./Capturas/Certificadossl.png)<br>
    Conexion Filezilla.<br>
-   (./Capturas/filezilla.png)<br>
+   ![Conexion Filezilla](./Capturas/filezilla.png)<br>
+   Certificado ssl Filezilla.<br>
+   ![Certificado ssl Filezilla](./Capturas/Certificadossl.png)<br>
+   
 3. Editamos la configuración en `/etc/vsftpd.conf` para habilitar FTPS:
 
    ```bash
