@@ -82,7 +82,12 @@ sudo systemctl restart nginx
 ### Comprobaciones
 
 - **Archivo /etc/hosts**: Añadimos la IP y el nombre del dominio.
-- **Registros de Nginx**: Consultamos los logs en `/var/log/nginx/access.log` y `/var/log/nginx/error.log`.
+- **Registros de Nginx**: Consultamos los logs en `/var/log/nginx/access.log` y `/var/log/nginx/error.log`.<br>
+Comprobacion error log dominio 1 web.<br>
+![Comprobacion segundo Dominio](./Capturas/PruebaErrorlog.png)<br>
+Comprobacion acces log dominio 1 web.<br>
+![Comprobacion segundo Dominio](./Capturas/PruebaAcceslog.png)<br>
+
 
 ## 4. Configuración de FTPS en Debian
 
