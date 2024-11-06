@@ -8,9 +8,6 @@
 apt update
 apt install -y nginx git
 
-# Verificar que Nginx esté funcionando
-sudo systemctl status nginx
-
 # 2. Crear la carpeta del sitio web
 sudo mkdir -p /var/www/ismael/html
 
@@ -19,23 +16,24 @@ git clone https://github.com/cloudacademy/static-website-example /var/www/ismael
 
 # Asignar permisos adecuados
 sudo chown -R www-data:www-data /var/www/ismael/html
-sudo chmod -R 755 /var/www/ismael
+sudo chmod -R 775 /var/www/ismael
 
 # 3. Configurar Nginx para servir el sitio web
 # Crear archivo de configuración del sitio en sites-available
-sudo bash -c 'cat > /etc/nginx/sites-available/ismael <<EOF
-server {
-    listen 80;
-    listen [::]:80;
-    root /var/www/ismael/html;
-    index index.html index.htm index.nginx-debian.html;
-    server_name ismael;
+# sudo bash -c 'cat > /etc/nginx/sites-available/ismael <<EOF
+# server {
+#     listen 80;
+#     listen [::]:80;
+#     root /var/www/ismael/html;
+#     index index.html index.htm index.nginx-debian.html;
+#     server_name ismael.test;
 
-    location / {
-        try_files \$uri \$uri/ =404;
-    }
-}
-EOF'
+#     location / {
+#         try_files \$uri \$uri/ =404;
+#     }
+# }
+# EOF'
+cp /vagrant/ismael /etc/nginx/sites-available/ismael
 
 # Crear enlace simbólico en sites-enabled
 sudo ln -s /etc/nginx/sites-available/ismael /etc/nginx/sites-enabled/
@@ -57,7 +55,7 @@ echo "ismael:ismael" | sudo chpasswd
 sudo mkdir /home/ismael/ftp
 #Permisos carpeta
 sudo chown vagrant:vagrant /home/ismael/ftp
-sudo chmod 755 /home/ismael/ftp
+sudo chmod 775 /home/ismael/ftp
 # Verificar si el certificado ya existe
 if [ ! -f /etc/ssl/certs/vsftpd.crt ]; then
      # Crear el certificado SSL
@@ -77,10 +75,11 @@ sudo chmod -R 775 /var/www/ismaelpersonal
 
 # Reiniciar el servicio vsftpd
 sudo systemctl restart vsftpd
-sudo systemctl status vsftpd
 
 # Clonar el repositorio en la carpeta
 sudo git clone https://github.com/IsmaelManz26/MxIsmaelManzano.git /var/www/ismaelpersonal
+
+sudo chmod -R 775 /var/www/ismaelpersonal
 
 # Copiar el archivo de sites avaliable del nuevo dominio
 cp /vagrant/ismaelpersonal /etc/nginx/sites-available/ismaelpersonal
